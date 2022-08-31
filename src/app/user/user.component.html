@@ -1,0 +1,58 @@
+<div class="card-title">
+  <h1>User List</h1>
+</div>
+
+  <table mat-table [dataSource]="listGet" class="mat-data-table">
+  
+    <!-- Position Column -->
+    <!-- <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container> -->
+  
+    <!-- First Name Column -->
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef> First Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+  
+    <!-- Last Name Column -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> Last Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+  
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <!-- Phone Number Column -->
+    <ng-container matColumnDef="phoneNumber">
+        <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+        <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="isAutherized">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status</th>
+        <td mat-cell *matCellDef="let element"> 
+          <!-- {{element.isAuthorized}} -->
+
+          <!-- Else Condition -->
+              <!-- <ng-container *ngIf="element.isAuthorized === '1'"><span style="color:green">Authorized</span></ng-container>
+              <ng-container *ngIf="element.isAuthorized === '0'"><span style="color:orange">Pending</span></ng-container>
+              <ng-container *ngIf="element.isAuthorized === 'C'"><span style="color:red">Cancel</span></ng-container> -->
+
+              <!-- Else If Condition -->
+              <ng-template [ngIf]="element.isAuthorized === '1'"><span style="color:green">Authorized</span></ng-template>
+              <ng-template [ngIf]="element.isAuthorized === '0'"><span style="color:orange">Pending</span></ng-template>
+              <ng-template [ngIf]="element.isAuthorized === 'C'"><span style="color:red">Cancel</span></ng-template>
+        </td>
+      </ng-container>
+    
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
